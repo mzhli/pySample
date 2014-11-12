@@ -4,7 +4,6 @@ Created on 2014年11月12日
 
 @author: mzhli
 '''
-
 import re
 
 def pickMatchedStrings(pattern, listInputString):
