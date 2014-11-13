@@ -1,3 +1,2 @@
 import multiparams
-import usepath
 import usestring

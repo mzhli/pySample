@@ -25,12 +25,19 @@ def normalizePath(origpath):
 
 def _printEntry(arg, dirname, fnames):
     for fname in fnames:
-        if (os.path.isfile(fname)):
-            print os.path.join(dirname, fname)
+        fullpath = os.path.join(dirname, fname) # convert to fullpath before examing whether it is a directory or not
+        if not os.path.isdir(fullpath):
+            print fullpath
     
 def printAllEntries(basedir, stream):
     if os.path.isdir(basedir):
-        os.path.walk(os.path.abspath(basedir), _printEntry, None)
+        os.path.walk(os.path.realpath(basedir), _printEntry, None)
+        
+def printAllEntries2(basedir, stream):
+    if os.path.isdir(basedir):
+        for dirpath, subdirs, files in os.walk(os.path.realpath(basedir)):
+            for filename in files:
+                print os.path.join(dirpath, filename)
 
 if __name__ == '__main__':
     # Test path normalization
@@ -42,5 +49,9 @@ if __name__ == '__main__':
     removeThenCreate(targetfile)
     
     # Test printing all entries in one directory
-    printAllEntries("../../", sys.stdout)
+    print "-----------------------------"
+    printAllEntries("../", sys.stdout)
+    print "-----------------------------"
+    printAllEntries2("../", sys.stdout)
+    
     
