@@ -7,15 +7,15 @@ Created on 2014年11月12日
 import pickle
 import pprint
 
-def writeDictToText(d, outfile):
+def writeDictAsTextfile(d, outfile):
     f = open(outfile, "w")
     pickle.dump(d, f)
     
-def writeDictToBinary(d, outfile):
+def writeDictAsBinaryfile(d, outfile):
     f = open(outfile, "wb")
     pickle.dump(d, f, protocol=1)
     
-def writeDictToBinary2(d, outfile):
+def writeDictToBinaryfile2(d, outfile):
     f = open(outfile, "wb")
     pickle.dump(d, f, protocol=2)
     
@@ -34,9 +34,9 @@ if __name__ == '__main__':
     outfileText = "./sampledict.tdp"
     outfileBin = "./sampledict.bdp"
     outfileBin2 = "./sampledict.bdp2"
-    writeDictToText(sampleDict, outfileText)
-    writeDictToBinary(sampleDict, outfileBin)
-    writeDictToBinary2(sampleDict, outfileBin2)
+    writeDictAsTextfile(sampleDict, outfileText)
+    writeDictAsBinaryfile(sampleDict, outfileBin)
+    writeDictToBinaryfile2(sampleDict, outfileBin2)
     pprint.pprint(readDictFromFile(outfileText))
     pprint.pprint(readDictFromFile(outfileBin))
     pprint.pprint(readDictFromFile(outfileBin2))
