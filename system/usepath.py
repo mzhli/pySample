@@ -43,3 +43,4 @@ if __name__ == '__main__':
     
     # Test printing all entries in one directory
     printAllEntries("../../", sys.stdout)
+    
